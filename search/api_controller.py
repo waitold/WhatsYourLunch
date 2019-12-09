@@ -12,7 +12,7 @@ def search_venues_info(ll, radius, query):
         limit=10,
     )
     res = client.venues.search(params=params)
-    return {''.join(i['name'].split(' ')): i['id'] for i in res['venues']}
+    return {i['name']: i['id'] for i in res['venues']}
 
 
 def place_to_ll(place):

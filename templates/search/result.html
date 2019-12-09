@@ -5,14 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<div class="result">
-    {% for i in result %}
-        <div>
-        {{ i }}
-        <input type="hidden">{{ result.i }}
+<div class="venues_name" >
+    {% for name, id in name_id_dict.items %}
+        <div id="name{{ forloop.counter0 }}">
+        {{ name }}
+        <input type="hidden" value="{{ id }}">
         </div>
     {% endfor %}
 </div>
+<input type="hidden" id="venues_id" value={{ id_list }}>
 <form action="" method="get">
     <input type="submit" value="戻る">
 </form>
