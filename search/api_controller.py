@@ -1,18 +1,18 @@
 import foursquare
 import googlemaps
-import json
 from . import api_key
 
 
-def search_venues(ll, radius, query):
+def search_venues_info(ll, radius, query):
     client = foursquare.Foursquare(client_id=api_key.CLIENT_ID, client_secret=api_key.CLIENT_SECRET)
     params = dict(
         ll=ll,
         radius=radius,
         query=query,
+        limit=10,
     )
     res = client.venues.search(params=params)
-    return [i['name'] for i in res['venues']]
+    return {''.join(i['name'].split(' ')): i['id'] for i in res['venues']}
 
 
 def place_to_ll(place):
@@ -21,3 +21,5 @@ def place_to_ll(place):
     lat = str(geocode[0]["geometry"]["location"]["lat"])
     lng = str(geocode[0]["geometry"]["location"]["lng"])
     return lat+','+lng
+
+

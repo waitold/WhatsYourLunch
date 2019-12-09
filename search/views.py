@@ -19,8 +19,8 @@ class SearchView(View):
         if not form.is_valid():
             return render(request, 'search/index.html', {'form': form})
         ll = api_controller.place_to_ll(form.cleaned_data['place'])
-        res = api_controller.search_venues(ll, form.cleaned_data['radius'], form.cleaned_data['query'])
-        return render(request, 'search/result.html', {'result': res})
+        name_id_dict = api_controller.search_venues_info(ll, form.cleaned_data['radius'], form.cleaned_data['query'])
+        return render(request, 'search/result.html', {'result': name_id_dict})
 
 
 search = SearchView.as_view()

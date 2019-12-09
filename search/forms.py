@@ -17,12 +17,3 @@ class SearchForm(forms.Form):
         min_value=100,
         max_value=100000,
     )
-
-    def get_place(self):
-        return self.place
-
-    def get_query(self):
-        return self.query
-
-    def get_radius(self):
-        return self.radius
