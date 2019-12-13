@@ -1,5 +1,6 @@
 import foursquare
 import googlemaps
+import json
 from . import api_key
 
 
@@ -7,11 +8,13 @@ def search_venues_info(ll, radius, query):
     client = foursquare.Foursquare(client_id=api_key.CLIENT_ID, client_secret=api_key.CLIENT_SECRET)
     params = dict(
         ll=ll,
+        intent='browse',
         radius=radius,
         query=query,
-        limit=10,
     )
     res = client.venues.search(params=params)
+    with open('result.txt', mode='w') as f:
+        f.write(json.dumps(res, indent=2).encode().decode('unicode-escape'))
     return {i['name']: i['id'] for i in res['venues']}
 
 
@@ -23,3 +26,15 @@ def place_to_ll(place):
     return lat+','+lng
 
 
+def sarch_place(loc, rad, keyword):
+    gmaps = googlemaps.Client(key=api_key.GOOGLE_API_KEY)
+    res = gmaps.places_nearby(loc, rad, keyword, 'JP')
+    with open('result.txt', mode='w') as f:
+        f.write(json.dumps(res, indent=2))
+
+
+def search_id(keyword):
+    gmaps = googlemaps.Client(key=api_key.GOOGLE_API_KEY)
+    res = gmaps.places_autocomplete(keyword)
+    with open('place_detail.txt', mode='w') as f:
+        f.write(json.dumps(res, indent=2).encode().decode('unicode-escape'))

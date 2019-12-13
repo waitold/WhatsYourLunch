@@ -1,0 +1,3 @@
+foursquare
+googlemaps
+django

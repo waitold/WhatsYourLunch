@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
+<h1>
+    こ↑こ↓<br>
+    {{ random }}
+</h1>
 <div class="venues_name" >
     {% for name, id in name_id_dict.items %}
         <div id="name{{ forloop.counter0 }}">
@@ -13,9 +17,10 @@
         </div>
     {% endfor %}
 </div>
-<input type="hidden" id="venues_id" value={{ id_list }}>
 <form action="" method="get">
     <input type="submit" value="戻る">
 </form>
+
+
 </body>
 </html>
