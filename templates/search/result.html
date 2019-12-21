@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,18 +10,22 @@
     こ↑こ↓<br>
     {{ random }}
 </h1>
+<iframe id="map" width="500" height="500"
+        src="https://maps.google.co.jp/maps?output=embed&q={{ random }}">
+
+</iframe>
 <div class="venues_name" >
-    {% for name, id in name_id_dict.items %}
-        <div id="name{{ forloop.counter0 }}">
+    {% for name, loc  in name_loc_dict.items %}
+        <div id="name{{ name }}">
         {{ name }}
-        <input type="hidden" value="{{ id }}">
+        <input type="button" value="{{ name }}" onclick="change_map({{ name }})">
         </div>
     {% endfor %}
 </div>
 <form action="" method="get">
     <input type="submit" value="戻る">
 </form>
-
-
+{% load static %}
+<script type="text/javascript" src="{% static 'search/search.js' %}"></script>
 </body>
 </html>
