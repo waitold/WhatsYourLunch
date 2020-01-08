@@ -4,28 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/search/result.css">
 </head>
 <body>
-<h1>
-    こ↑こ↓<br>
-    {{ random }}
-</h1>
-<iframe id="map" width="500" height="500"
-        src="https://maps.google.co.jp/maps?output=embed&q={{ random }}">
 
-</iframe>
-<div class="venues_name" >
-    {% for name, loc  in name_loc_dict.items %}
-        <div id="name{{ name }}">
-        {{ name }}
-        <input type="button" value="{{ name }}" onclick="change_map({{ name }})">
-        </div>
-    {% endfor %}
+<div class="menu">
+    <div class="suggest">
+    おすすめの店 &emsp; {{ random }}
+    </div>
+    <div class="venues_name" >
+        {% for name, loc  in name_loc_dict.items %}
+            <div class="venue" id="{{ name }}">
+                <span class="name">{{ name }}</span>
+                <input type="button" value="この店を見る" onclick=change_map("{{ name }}","{{ place }}")>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="map_menu">
+        <iframe id="map" width="800" height="300"
+                src="https://maps.google.co.jp/maps?output=embed&q={{ random }}{{ place }}">
+        </iframe>
+        <form action="../result/" method="post">
+                    {% csrf_token %}
+            <input type="hidden" id="location" name="loc" value="{{ random }} {{ place }}">
+            <input type="hidden" id="form" name="store" value="{{ random }}">
+            <input type="submit" value="この店にする">
+        </form>
+    </div>
+    <form action="" method="get">
+        <input type="submit" value="戻る">
+    </form>
 </div>
-<form action="" method="get">
-    <input type="submit" value="戻る">
-</form>
+
+
+</body>
 {% load static %}
 <script type="text/javascript" src="{% static 'search/search.js' %}"></script>
-</body>
 </html>

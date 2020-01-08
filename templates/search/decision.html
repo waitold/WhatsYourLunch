@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/search/decision.css">
+</head>
+<body>
+<div class="menu">
+    <div class="store" >
+        {{ store_name }}
+    </div>
+    <div class="map_menu">
+        <iframe id="map" width="800" height="300">
+{#                src="https://maps.google.co.jp/maps?output=embed&q={{ store_adr }}{{ place }}">#}
+        </iframe>
+                <a href="https://twitter.com/intent/tweet?text=今日のランチはここで決定！&url=example.com&hashtags=WhatsYourLunch"
+                   rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)),
+                   'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1');
+                   return false;"><img src=""></a>
+            </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+</div>
+</body>
+</html>

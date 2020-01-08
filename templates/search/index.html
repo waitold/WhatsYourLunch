@@ -1,14 +1,60 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/static/search/search.css">
     <title>Title</title>
 </head>
 <body>
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+{% load widget_tweaks %}
+<div class="form_block">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="forms" id="query">
+            {{ form.keyword | add_class:"query_ef"}}
+            <label>{{ form.keyword.label }}</label>
+            <span class="query_focus_line"></span>
+            <div class="popular_query">
+                みんなの検索ワード
+                {% for word in popular_query %}
+                    <span>
+                        <input class="suggest_button" id="pop_query" type="button" value="{{ word.keyword }}" onclick=change_query("{{ word.keyword }}")>
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="forms" id="places">
+            {{ form.place| add_class:"place_ef" }}
+            <label>{{ form.place.label }}</label>
+            <span class="place_focus_line"></span>
+            <div class="recent_place">
+             最近の検索
+            {% for i in recently_place %}
+                <span>
+                    <input type="button" class="suggest_button" value="{{ i.place }}" onclick=change_place("{{ i.place }}")>
+                </span>
+            {% endfor %}
+            </div>
+        </div>
+
+        <div class="forms" id="radius">
+            {{ form.radius | add_class:"radius_ef"}}
+            <label>{{ form.radius.label }}</label>
+            <span class="radius_focus_line"></span>
+            <div>
+            {% for rad in radius %}
+                <input class="suggest_button" type="button" value="{{ rad }}" onclick=change_radius("{{ rad }}")>
+            {% endfor %}
+            </div>
+        </div>
+        <input class="forms" type="submit" value="決定">
+    </form>
+</div>
+</div>
 </body>
+<script type="text/javascript" src="{% static 'search/search.js' %}"></script>
 </html>

@@ -1,0 +1,16 @@
+body .menu{
+    margin: 0 100px;
+    width: 80%;
+    background: #f1eef1;
+}
+.menu .store{
+    text-align: center;
+    font-style: oblique;
+    font-size: 30px;
+}
+.menu .map_menu{
+    text-align: center;
+}
+.menu a{
+    text-align: end;
+}

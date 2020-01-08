@@ -26,15 +26,16 @@ def place_to_ll(place):
     return lat+','+lng
 
 
-def sarch_place(loc, rad, keyword):
+def search_place(loc, keyword, rad):
     gmaps = googlemaps.Client(key=api_key.GOOGLE_API_KEY)
     res = gmaps.places_nearby(loc, rad, keyword, 'ja')
     with open('g_result.txt', mode='w') as f:
         f.write(json.dumps(res, indent=2).encode().decode('unicode-escape'))
-    name_list = [i['name'] for i in res['results']]
+    name_list = ["".join(i['name'].split()) for i in res['results']]
     geo_list = [i['geometry']['location'] for i in res['results']]
     loc_list = [str(geo['lat'])+','+str(geo['lng']) for geo in geo_list]
-    return{name_list[i]: loc_list[i] for i in range(len(name_list))}
+    adr_list = [i['vicinity'] for i in res['results']]
+    return{name_list[i]: [loc_list[i], adr_list[i]] for i in range(len(name_list))}
 
 
 def search_id(keyword):

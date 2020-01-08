@@ -1,0 +1,228 @@
+.forms {
+	position: relative;
+	font-size: 30px;
+	font-style: italic;
+	width: 80%;
+	margin: 40px 3%;
+}
+.forms input[type='text'] {
+	font: 15px/24px sans-serif;
+	font-size: 30px;
+	box-sizing: border-box;
+	width: 100%;
+	letter-spacing: 1px;
+	padding-left: 4em;
+	text-align: center;
+}
+.forms input[type='text']:focus {
+	outline: none;
+}
+.forms input[type='number'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	font-size: 30px;
+	width: 100%;
+	letter-spacing: 1px;
+	padding-left: 4em;
+	text-align: center;
+}
+.forms input[type='number']:focus {
+	outline: none;
+}
+.query_ef {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #1b2538;
+	background-color: transparent;
+}
+.query_ef ~ .query_focus_line {
+	position: absolute;
+	z-index: 99;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+}
+.query_ef ~ .query_focus_line:before,
+.query_ef ~ .query_focus_line:after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	content: '';
+	transition: 0.4s;
+	background-color: #88da5c;
+}
+.query_ef ~ .query_focus_line:after {
+	right: 0;
+	left: auto;
+}
+.query_ef:focus ~ .query_focus_line:before,
+.query_ef:focus ~ .query_focus_line:after,
+.forms.query_ef ~ .query_focus_line:before,
+.forms.query_ef ~ .query_focus_line:after {
+	width: 50%;
+	transition: 0.4s;
+}
+.query_ef ~ label {
+	position: absolute;
+	z-index: -1;
+	top: 4px;
+	left: 0;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+	color: #aaaaaa;
+}
+.query_ef:focus ~ label,
+.forms.query_ef ~ label {
+	font-size: 12px;
+	top: -16px;
+	transition: 0.3s;
+	color: #88da5c;
+}
+
+
+.place_ef {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #1b2538;
+	background-color: transparent;
+}
+.place_ef ~ .place_focus_line {
+	position: absolute;
+	z-index: 99;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2px;
+}
+.place_ef ~ .place_focus_line:before,
+.place_ef ~ .place_focus_line:after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	content: '';
+	transition: 0.4s;
+	background-color: #88da5c;
+}
+.place_ef ~ .place_focus_line:after {
+	right: 0;
+	left: auto;
+}
+.place_ef:focus ~ .place_focus_line:before,
+.place_ef:focus ~ .place_focus_line:after,
+.forms.place_ef ~ .place_focus_line:before,
+.forms.place_ef ~ .place_focus_line:after {
+	width: 50%;
+	transition: 0.4s;
+}
+.place_ef ~ label {
+	position: absolute;
+	z-index: -1;
+	top: 4px;
+	left: 0;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+	color: #aaaaaa;
+}
+.place_ef:focus ~ label,
+.forms.place_ef ~ label {
+	font-size: 12px;
+	top: -16px;
+	transition: 0.3s;
+	color: #88da5c;
+}
+
+
+.radius_ef {
+	padding: 4px 0;
+	border: 0;
+	border-bottom: 1px solid #1b2538;
+	background-color: transparent;
+}
+.radius_ef ~ .radius_focus_line {
+	position: absolute;
+	z-index: 99;
+	bottom: 0;
+	lradius_eft: 0;
+	width: 100%;
+	height: 2px;
+}
+.radius_ef ~ .radius_focus_line:before,
+.radius_ef ~ .radius_focus_line:after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	content: '';
+	transition: 0.4s;
+	background-color: #88da5c;
+}
+.radius_ef ~ .radius_focus_line:after {
+	right: 0;
+	left: auto;
+}
+.radius_ef:focus ~ .radius_focus_line:before,
+.radius_ef:focus ~ .radius_focus_line:after,
+.forms.radius_ef ~ .radius_focus_line:before,
+.forms.radius_ef ~ .radius_focus_line:after {
+	width: 50%;
+	transition: 0.4s;
+}
+.radius_ef ~ label {
+	position: absolute;
+	z-index: -1;
+	top: 4px;
+	left: 0;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+	color: #aaaaaa;
+}
+.radius_ef:focus ~ label,
+.forms.radius_ef ~ label {
+	font-size: 12px;
+	top: -16px;
+	transition: 0.3s;
+	color: #88da5c;
+}
+
+input[type='button'] {
+	font-size: 20px;
+  	display: inline-block;
+  	padding: 0.3em 1em;
+  	text-decoration: none;
+  	color: #88da5c;
+  	border: solid 2px #88da5c;
+  	border-radius: 3px;
+	background: #ffffff;
+  	transition: .4s;
+}
+
+input[type='button']:hover {
+  	background: #88da5c;
+  	color: white;
+}
+
+input[type='submit'] {
+	font-size: 20px;
+  	display: inline-block;
+  	padding: 0.3em 1em;
+  	text-decoration: none;
+  	color: #DA5715;
+  	border: solid 2px #DA5715;
+  	border-radius: 3px;
+	background: #ffffff;
+  	transition: .4s;
+}
+
+input[type='submit']:hover {
+  	background: #DA5715;
+  	color: white;
+}
