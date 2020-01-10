@@ -9,36 +9,42 @@
     <link rel="stylesheet" href="/static/search/result.css">
 </head>
 <body>
-
+<header class="header">
+    <img src="/static/search/690648.png">
+</header>
 <div class="menu">
-    <div class="suggest">
-    おすすめの店 &emsp; {{ random }}
+    <div class="suggest_box">
+        <div class="suggest">
+            <p>おすすめの店  <span class="random">{{ random }}</span></p>
+        </div>
     </div>
     <div class="venues_name" >
         {% for name, loc  in name_loc_dict.items %}
-            <div class="venue" id="{{ name }}">
-                <span class="name">{{ name }}</span>
-                <input type="button" value="この店を見る" onclick=change_map("{{ name }}","{{ place }}")>
+            <div class="venue" id="{{ name }}" onclick=change_map("{{ name }}","{{ loc.1 }}")>
+                <p>{{ name }}</p>
             </div>
         {% endfor %}
     </div>
     <div class="map_menu">
-        <iframe id="map" width="800" height="300"
-                src="https://maps.google.co.jp/maps?output=embed&q={{ random }}{{ place }}">
+        <iframe id="map" width="650" height="350"
+                src="https://maps.google.co.jp/maps?output=embed&q={{ random }}{{ random_adr}}">
         </iframe>
         <form action="../result/" method="post">
                     {% csrf_token %}
-            <input type="hidden" id="location" name="loc" value="{{ random }} {{ place }}">
+            <input type="hidden" id="location" name="loc" value="{{ random_adr }}">
             <input type="hidden" id="form" name="store" value="{{ random }}">
             <input type="submit" value="この店にする">
         </form>
     </div>
     <form action="" method="get">
-        <input type="submit" value="戻る">
+        <div class="submit_form">
+            <input type="submit" value="戻る">
+        </div>
     </form>
 </div>
+<footer>
 
-
+</footer>
 </body>
 {% load static %}
 <script type="text/javascript" src="{% static 'search/search.js' %}"></script>

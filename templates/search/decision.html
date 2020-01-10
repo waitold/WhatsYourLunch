@@ -6,19 +6,38 @@
     <link rel="stylesheet" href="/static/search/decision.css">
 </head>
 <body>
+<header class="header">
+    <img src="/static/search/690648.png">
+</header>
 <div class="menu">
     <div class="store" >
-        {{ store_name }}
+        <div class="name">
+            {{ store_name }}
+        </div>
+        <div class="address">
+            {{ store_adr }}
+        </div>
     </div>
     <div class="map_menu">
         <iframe id="map" width="800" height="300">
-{#                src="https://maps.google.co.jp/maps?output=embed&q={{ store_adr }}{{ place }}">#}
+                src="https://maps.google.co.jp/maps?output=embed&q={{ store_adr }}{{ place }}">
         </iframe>
+        <div class="share">
+            <p class="txt">みんなと共有</p>
+            <div class="tweet">
                 <a href="https://twitter.com/intent/tweet?text=今日のランチはここで決定！&url=example.com&hashtags=WhatsYourLunch"
                    rel=”nofollow” onClick="window.open(encodeURI(decodeURI(this.href)),
-                   'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1');
-                   return false;"><img src=""></a>
-            </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                       'twwindow','width=550, height=450, personalbar=0, toolbar=0, scrollbars=1');
+                       return false;"><img src="/static/search/Twitter_Logo_Blue.png"></a>
+                </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="line">
+                <div class="line-it-button" style="display: none;" data-lang="ja" data-type="share-b" data-ver="3"
+                     data-url="http://WhatsYourLunch." data-color="default"
+                     data-size="large" data-count="false"></div>
+                <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+            </div>
+        </div>
     </div>
 </div>
 </body>

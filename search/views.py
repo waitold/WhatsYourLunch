@@ -11,17 +11,15 @@ from . import model_controller
 
 class TopView(View):
     def get(self, request, *args, **kwargs):
-        model = models.YourLunch
-        res = model.objects.all().values()
-        store_list = [i['store'] for i in res]
-        return render(request, 'search/top.html', {'store_list': store_list})
+        store_list = model_controller.get_recent_lunch()
+        return render(request, 'search/top.html', {'store_list': list([i['store'], i['address']] for i in store_list)})
 
 
 class SearchView(View):
     def get(self, request, *args, **kwargs):
         context = {
             'recently_place': model_controller.get_recently_place(),
-            'popular_query': models.Query.objects.all().order_by('keyword').values(),
+            'popular_query': models.Query.objects.all().order_by('-keyword').values(),
             'radius': [500, 1000, 2000, 5000],
             'form': SearchForm(),
         }
@@ -40,10 +38,13 @@ class SearchView(View):
         loc = api_controller.place_to_ll(place)
         name_loc_dict = api_controller.search_place(loc, keyword, radius)
         random_venue = 0
+        rand_adr = 0
         if len(name_loc_dict) > 0:
-            random_venue = list(name_loc_dict.keys())[random.randrange(0, len(name_loc_dict))]
+            rand = random.randrange(0, len(name_loc_dict))
+            random_venue = list(name_loc_dict.keys())[rand]
+            rand_adr = list(name_loc_dict.values())[rand][1]
         return render(request, 'search/result.html', {'name_loc_dict': name_loc_dict,
-                                                      'place': place, 'random': random_venue})
+                                                      'place': place, 'random': random_venue, 'random_adr': rand_adr})
 
 
 class ResultView(View):
@@ -58,12 +59,11 @@ class ResultView(View):
 
     def post(self, request, *args, **kwargs):
         store_name = request.POST.get('store', None)
-        store_place = request.POST.get('loc', None)
-        model_controller.create_lunch(store_name)
+        store_adr = request.POST.get('loc', None)
+        model_controller.create_lunch(store_name, store_adr)
         context = {
             'store_name': store_name,
-            'store_adr': store_place.split()[0],
-            'place': store_place.split()[1]
+            'store_adr': store_adr
         }
         return render(request, 'search/decision.html', context)
 

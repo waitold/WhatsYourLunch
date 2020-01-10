@@ -20,3 +20,4 @@ class Result(models.Model):
 
 class YourLunch(models.Model):
     store = models.CharField(verbose_name='お店', max_length=31)
+    address = models.CharField(verbose_name='住所', max_length=127, default='')

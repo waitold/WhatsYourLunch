@@ -3,7 +3,7 @@ change_map = function(name, loc) {
     const map = document.getElementById('map');
     const query = name.toString() + loc.toString();
     document.getElementById('form').value = name;
-    document.getElementById('location').value = name.toString() + " " + loc.toString();
+    document.getElementById('location').value = loc.toString();
     map.src = url + query
 };
 change_place = function (place) {

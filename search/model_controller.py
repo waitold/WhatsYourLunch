@@ -7,7 +7,7 @@ def create_search(place: str, keyword: str, radius: str):
 
 
 def get_recently_place():
-    model = models.Search.objects.all().order_by('id').values()
+    model = models.Search.objects.all().order_by('-id').values()
     place_list = []
     for place in model.values("place"):
         if place not in place_list:
@@ -23,6 +23,7 @@ def update_query(keyword: str):
         model = models.Query.objects.get(keyword=keyword)
         model.overall_count = model.overall_count + 1
         model.recent_count = model.recent_count + 1
+        model.save()
     else:
         model = models.Query(keyword=keyword, overall_count=1, recent_count=1)
         model.save()
@@ -34,6 +35,11 @@ def create_result(stores: list, place: str, keyword: str, radius: str):
     model.save()
 
 
-def create_lunch(store: str):
-    model = models.YourLunch(store=store)
+def create_lunch(store: str, adr: str):
+    model = models.YourLunch(store=store, address=adr)
     model.save()
+
+
+def get_recent_lunch():
+    model = models.YourLunch.objects.order_by('-id').values()[:10]
+    return model

@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/static/search/top.css">
 </head>
 <body>
-{% for i in store_list %}
-    {{ i }}
+<header class="header">
+    <img src="/static/search/690648.png">
+</header>
+<div class="store_list">
+    {% for name, adr in store_list %}
+    <div class=store>
+        <div class="name">{{ name }}</div>
+        <div class="address">{{ adr }}</div>
+    </div>
 {% endfor %}
+</div>
 <form action="search" method="get">
     <input type="submit" value="店を探す">
 </form>
