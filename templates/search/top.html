@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>What'sYourLunch～おすすめのお昼ご飯をあなたに～</title>
     <link rel="stylesheet" href="/static/search/top.css">
 </head>
 <body>
 <header class="header">
     <img src="/static/search/690648.png">
 </header>
-<div class="store_list">
-    {% for name, adr in store_list %}
-    <div class=store>
-        <div class="name">{{ name }}</div>
-        <div class="address">{{ adr }}</div>
+<div class="main">
+    <div class="menu">
+        <div class="description">
+            <p>
+                お昼ご飯を決めるのに困ったことはありませんか？
+                What'sYourLunchはあなたにおすすめのお店を紹介します！
+            </p>
+        </div>
+        <form action="search" method="get">
+            <input type="submit" value="店を探す">
+        </form>
     </div>
-{% endfor %}
+    <p class="share">　みんなのお昼ご飯</p>
+    <div class="store_list">
+        {% for name, adr in store_list %}
+            <div class=store>
+                <div class="name">{{ name }}</div>
+                <div class="address">{{ adr }}</div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
-<form action="search" method="get">
-    <input type="submit" value="店を探す">
-</form>
 </body>
 </html>

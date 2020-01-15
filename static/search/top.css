@@ -4,27 +4,62 @@ header{
 header img{
     width: 190px;
 }
+.menu{
+    margin: 0 auto;
+    width: 800px;
+    font-size:20px
+}
+input[type='submit'] {
+	font-size: 20px;
+  	display: inline-block;
+  	padding: 0.3em 1em;
+  	text-decoration: none;
+  	color: #DA5715;
+  	border: solid 2px #DA5715;
+  	border-radius: 3px;
+	background: #ffffff;
+  	transition: .4s;
+    width: 100%;
+    margin: 0;
+}
+input[type='submit']:hover {
+  	background: #DA5715;
+  	color: white;
+}
+input[type="submit"]:hover{
+    cursor: pointer;
+}
+.menu p{
+    color: #7f8c8d;
+}
+.share{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 20px;
+    color: #7f8c8d;
+}
 .store_list{
-    float: left;
-    text-align: left;
-    margin: 0 0 0 10em;
+    margin: 0 auto 0 auto ;
+    width: 800px;
     height: 400px;
     overflow-y: scroll;
 }
 .store{
-    width: 350px;
+    width: 750px;
     padding: 0.5em 1em;
-    margin: 2em 0;
+    margin: 1em auto;
     color: #2ecc71;
     background: white;
     border-top: solid 5px #1abc9c;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-.store:hover{
-    color: white;
-    background: #1abc9c;
-    border-top: solid 5px #1abc9c;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
-    transition: .4s;
-    cursor: pointer;
+.store .name{
+    margin: 0 0 0 5em;
+    font-size: 20px
+}
+.store .address{
+    text-align: right;
+    margin: 0 5em 0 0;
+    color: #7f8c8d;
 }

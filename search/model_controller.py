@@ -14,7 +14,6 @@ def get_recently_place():
             place_list.append(place)
         if len(place_list) > 4:
             return place_list
-        print(place_list)
     return place_list
 
 
